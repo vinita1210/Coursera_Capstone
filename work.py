@@ -68,3 +68,16 @@ Checkpoint 4 :
 1) df.select("state","pincode").groupBy("state").agg(F.countDistinct("pincode").alias('count')).filter(col('count') > 1).show()
 
 2) df.select("state","rejected").groupBy("state").agg(F.sum('rejected').alias('sumOfReject')).where(col("state").isin({"Uttar Pradesh","Maharashtra"})).show()
+
+Checkpoint 5 :
+1)
+df1 = df.select("gender","state","rejected","aadhar_generated").where("gender = 'M'").groupBy("state").agg(F.sum("aadhar_generated").alias('accepted'),F.sum("rejected").alias('reject'))
+df1 = df1.withColumn("perc", (((F.col("accepted") - F.col("reject"))/ F.col("accepted"))* 100))
+df1.sort(desc('perc')).show(3,False)
+
+2)
+
+df1 = df.select("gender","state","rejected","aadhar_generated","district").where((col("state").isin({"Lakshadweep","Manipur","Arunachal Pradesh"})) & (col("gender") == 'F')).groupBy("district").agg(F.sum("aadhar_generated").alias('accepted'),F.sum("rejected").alias('reject'))
+df1 = df1.withColumn("perc", (((F.col("reject"))/ ((F.col("accepted")) + (F.col("reject"))) )* 100))
+df1.sort(desc('perc')).show(3,False)
+
