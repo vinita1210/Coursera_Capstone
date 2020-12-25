@@ -14,10 +14,10 @@ spark = SparkSession.builder.appName("Data Compare").getOrCreate()
 #record_to_print = spark.conf.get("")
 
 
-data1 =[('vini','raikwar',25,'mds','tcs',3),('pulkit','agarwal',27,'bry','deloitteö',5),('teju','gherade',23,'pune','tcs',1)] 
+data1 =[('vini','raikwar',25,'mds','tcs',3),('ritu','raikwar',27,'bpl','deloitte',5),('teju','gherade',23,'pune','tcs',1)] 
 schema1 = ['name','surname','age','place','company','exp']
 
-data2 = [('vini',25,'hadoop',2, 'tcs'),('pulkit',27,'spark',4,'deloitte')]
+data2 = [('vini',25,'hadoop',2, 'tcs'),('ritu',27,'spark',4,'deloitte')]
 schema2 = ['name','age','technology','exp','company']
 
 primary_key = ['name']
