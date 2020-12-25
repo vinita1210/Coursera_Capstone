@@ -1,3 +1,5 @@
+https://docs.google.com/document/d/1MhBI1hayHXHOEBLR0QsSezyq_m_OVtf-o-SxJW0RlbQ/edit#
+
 from pyspark.sql.functions import *
 from pyspark.sql.types import *
 from pyspark.sql.window import Window
